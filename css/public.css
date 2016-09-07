@@ -1,0 +1,56 @@
+.mui-slider-group img {
+	width: 100%;
+}
+
+.mui-media-body span {
+	margin-left: 10px;
+}
+
+.mui-card-content img {
+	width: 100%;
+}
+
+.nlb-num {
+	font-size: 40px;
+	color: crimson;
+	font-weight: 100;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.nlb-show-detail{
+	float: right;
+	color: crimson;
+	font-size: 14px;
+}
+
+.nlb-icon-image{
+	width: 15px;
+	height: 15px;
+}
+
+.nlb-offset-min {
+	margin-left: 5px;
+}
+
+.nlb-v-align {
+	vertical-align: middle;
+}
+
+.nlb-v-align span{
+	display: inline-block;
+}
+
+.nlb-rm-header-line {
+	position: static;
+}
+
+.nlb-data-title {
+	font-size: 14px;
+}
+
+.nlb-data-num {
+	font-size: 32px;
+	color: #F0AD4E;
+	font-weight: 400;
+}
