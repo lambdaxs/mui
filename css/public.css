@@ -11,12 +11,22 @@
 }
 
 .nlb-num {
-	font-size: 40px;
-	color: crimson;
+	font-size: 40px;	
 	font-weight: 100;
 	margin-top: 20px;
 	margin-bottom: 5px;
+	
 }
+
+.nlb-home-num {
+	color: crimson;
+}
+
+.nlb-mine-num {
+	color: white;
+}
+
+
 
 .nlb-show-detail{
 	float: right;
@@ -27,6 +37,12 @@
 .nlb-icon-image{
 	width: 15px;
 	height: 15px;
+}
+
+.nlb-cell-image {
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
 }
 
 .nlb-offset-min {

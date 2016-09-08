@@ -11,8 +11,9 @@
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav" id="titleView">
-		<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#"></a>
+		<!--<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#"></a>-->
 	    <h1 class="mui-title">首页</h1>
+	    <a class="mui-icon mui-icon-gear mui-pull-right" href="#" style="visibility: hidden;"></a>
 	</header>
 	<!--tabbar-->
 	<nav class="mui-bar mui-bar-tab" id="tabbar">
@@ -39,36 +40,36 @@
 		<!--banner-->
 	    <div class="mui-slider" id="index-top-banner">
 			<div class="mui-slider-group mui-slider-loop">			    
-			    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/030.png" /></a></div>
-			    <div class="mui-slider-item"><a href="#"><img src="images/010.jpg" /></a></div>
-			    <div class="mui-slider-item"><a href="#"><img src="images/020.png" /></a></div>
-			    <div class="mui-slider-item"><a href="#"><img src="images/030.png" /></a></div>			    			    
-			    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/010.jpg" /></a></div>
+			    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner/030.png" /></a></div>
+			    <div class="mui-slider-item"><a href="#"><img src="images/banner/010.jpg" /></a></div>
+			    <div class="mui-slider-item"><a href="#"><img src="images/banner/020.png" /></a></div>
+			    <div class="mui-slider-item"><a href="#"><img src="images/banner/030.png" /></a></div>			    			    
+			    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner/010.jpg" /></a></div>
 	  		</div>
 		</div>
 		<!--顶部选项卡-->
 		<ul class="mui-table-view mui-grid-9 mui-grid-view" id="index-top-tabbar">
 			<li class="mui-table-view-cell mui-media mui-col-xs-3">
 				<a href="#">
-					<span class="mui-icon mui-icon-chatbubble"></span>
+					<img src="images/toptab/toptab-1.png" style="width: 100%;"/>					
 					<div class="mui-media-body">消息</div>
 				</a>			
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-3">
 				<a href="#">
-					<span class="mui-icon mui-icon-email"></span>
+					<img src="images/toptab/toptab-2.png" style="width: 100%;"/>					
 					<div class="mui-media-body">邮件</div>
 				</a>			
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-3">
 				<a href="#">
-					<span class="mui-icon mui-icon-location"></span>
+					<img src="images/toptab/toptab-3.png" style="width: 100%;"/>					
 					<div class="mui-media-body">定位</div>
 				</a>			
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-3">
 				<a href="#">
-					<span class="mui-icon mui-icon-help"></span>
+					<img src="images/toptab/toptab-4.png" style="width: 100%;"/>					
 					<div class="mui-media-body">帮助</div>
 				</a>			
 			</li>
@@ -85,7 +86,7 @@
 			<!--内容区-->
 			<div class="mui-card-content">
 				<div class="mui-media-body mui-text-center">
-					<p class="nlb-num">18.8%</p>
+					<p class="nlb-num nlb-home-num">18.8%</p>
 					<p>年出借利率</p>
 				</div>			
 			</div>
@@ -103,7 +104,7 @@
 			</div>			
 			<div class="mui-card-content">
 				<div class="mui-media-body mui-text-center">
-					<p class="nlb-num">19.9%</p>
+					<p class="nlb-num nlb-home-num">19.9%</p>
 					<p>年出借利率</p>
 				</div>			
 			</div>			
@@ -152,7 +153,64 @@
 	
 	<!--我的模块-->
 	<div class="mui-control-content" id="nlb-tabbar-mine">
-		<p>我的</p>
+		<div class="mui-card mui-text-center" style="background-color: #37A061;">
+			<div class="mui-card-header nlb-rm-header-line nlb-mine-num">
+				昨日收益
+			</div>
+			<div class="mui-card-content nlb-num nlb-mine-num">
+				￥0.00
+			</div>
+			<div class="mui-card-footer nlb-rm-header-line mui-pull-right">
+				<a href="#" class="nlb-mine-num">
+					总收益0.00元<span class="mui-icon mui-icon-arrowright"></span>
+				</a>				
+			</div>
+		</div>
+		<ul class="mui-table-view">			
+			<li class="mui-table-view-cell">
+				<a href="#">
+					我的总资产<span>查看详情</span>
+					<p>￥0.00</p>
+				</a>
+			</li>																		
+		</ul>
+		<h5 class="mui-content-padded"></h5>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+				<a href="#" class="mui-navigate-right">
+					<img class="mui-pull-left nlb-cell-image" src="images/promise.png">
+					<div class="mui-media-body">
+						开设电子账户和绑卡	
+					</div>
+				</a>
+			</li>
+		</ul>
+		<h5 class="mui-content-padded"></h5>
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+				<a href="#" class="mui-navigate-right">
+					<img class="mui-pull-left nlb-cell-image" src="images/setting/mine-money.png">
+					<span>特权本金</span>										
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="#" class="mui-navigate-right">
+					<img class="mui-pull-left nlb-cell-image" src="images/setting/setting-yj.png">
+					<div class="mui-media-body">
+						推广收益	
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="#" class="mui-navigate-right">
+					<img class="mui-pull-left nlb-cell-image" src="images/setting/mine-list.png">
+					<div class="mui-media-body">
+						交易记录
+					</div>
+				</a>
+			</li>
+		</ul>
+		
 	</div>
 	</div>
 	
@@ -175,18 +233,25 @@
       	});
       	//首页顶部轮播index-top-banner 顶部选项卡index-top-tabbar 主要产品 数据看板 index-data-view
       	
-      	//切换tabbar时改变标题
+      	//切换tabbar时改变标题 显示/隐藏设置图标
       	mui('#tabbar').on('tap','a',function(){
       		var url = this.getAttribute('href');
       		var module = url.split('-').pop();
       		var title = mui('#titleView h1')[0];
+      		var setting = mui('#titleView a')[0];
       		var titleMap = {
       			index:'首页',
       			tree:'林场',
       			find:'发现',
       			mine:'我的'
       		};
-      		title.innerHTML = titleMap[module];      		
+      		title.innerHTML = titleMap[module];  
+      		titleMap[module] === '我的'?nlb.css(setting,{
+      			visibility:'visible'
+      		}):nlb.css(setting,{
+      			visibility:'hidden'
+      		});
+      		
       	});
     </script>
 	

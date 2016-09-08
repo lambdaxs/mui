@@ -43,6 +43,18 @@ var nlb = {
      		return  unescape(r[2]);
      	}
      	return null;
-	}
+	},	
+	css:function () {
+        var obj = arguments[0], options = arguments[1];  //获得函数的参数,第一个参数是dom对象。
+        if(!!obj == false || typeof options == 'undefined')
+            return null;
+        if( typeof options == 'string')
+            return document.defaultView.getComputedStyle(obj,null)[options];
+        if( typeof options == 'object') {
+            for(var i in options) {
+                obj.style[i] = options[i]; //设置css样式
+            }
+        }
+    }
 };
 
