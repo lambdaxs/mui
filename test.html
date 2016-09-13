@@ -2,83 +2,97 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />	    
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <script src="js/mui.min.js"></script>
 	   	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
 	    <link href="css/mui.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="css/public.css"/>
 		<style type="text/css">
 			body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-			#allmap{height:500px;width:100%;}
+			#allmap{height:300px;width:90%;margin: 0px auto;}
 			#r-result{width:100%;}
 		</style>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=t3G1QPkTms1vGFT464HWNHGytKMcfA7t"></script>
-	<title>添加/删除覆盖物</title>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=t3G1QPkTms1vGFT464HWNHGytKMcfA7t"></script>
+		<title>添加/删除覆盖物</title>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">详情</h1>
 		</header>
-		<div id="allmap"></div>
-		<div id="r-result">
-			<input type="button" onclick="add_overlay();" value="添加覆盖物" />
-			<input type="button" onclick="remove_overlay();" value="删除覆盖物" />
+		<div class="mui-content">
+			<div id="allmap"></div>
+			<div id="r-result">
+				<input type="button" onclick="add_overlay();" value="添加覆盖物" />
+				<input type="button" onclick="remove_overlay();" value="删除覆盖物" />
+		    经度:<input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+			纬度:<input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+				<input type="button" value="查询" onclick="theLocation()" />
+			</div>
 		</div>
 	</body>
+</html>
+<script type="text/javascript">
 	
-	<script>
-		mui.init();
-		var info = nlb.params('extraInfo');		
-		console.log(info);
-		var data = nlb.params('obj');
-		console.log(data.name+'=='+data.age);
-		
-		var jindu = 116.475;
-  var weidu = 40.018;
-	// 百度地图API功能
-	var map = new BMap.Map("allmap");
-	var point = new BMap.Point(jindu, weidu);
-	map.centerAndZoom(point, 15);
+	//创建矩形
+	function getRectView(pStart,pEnd) {		
+		var rectangle = new BMap.Polygon([
+			new BMap.Point(pStart.lng,pStart.lat),
+			new BMap.Point(pEnd.lng,pStart.lat),
+			new BMap.Point(pEnd.lng,pEnd.lat),
+			new BMap.Point(pStart.lng,pEnd.lat)
+		], {
+			strokeColor:"blue", 
+			strokeWeight:2, 
+			strokeOpacity:1,
+			fillColor:"red",
+			strokeStyle:"dashed"});
+		return rectangle;
+	}
 	
-	var marker = new BMap.Marker(new BMap.Point(jindu, weidu)); // 创建点
-	var polyline = new BMap.Polyline([
-		new BMap.Point(116.399, 39.910),
-		new BMap.Point(116.405, 39.920),
-		new BMap.Point(116.425, 39.900)
-	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});   //创建折线
-	
-	var circle = new BMap.Circle(point,500,{strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5}); //创建圆
-	
-	var polygon = new BMap.Polygon([
-		new BMap.Point(116.387112,39.920977),
-		new BMap.Point(116.385243,39.913063),
-		new BMap.Point(116.394226,39.917988),
-		new BMap.Point(116.401772,39.921364),
-		new BMap.Point(116.41248,39.927893)
-	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});  //创建多边形
-	
+	var map = new BMap.Map("allmap");	
+	//天安门坐标
 	var pStart = new BMap.Point(116.392214,39.918985);
 	var pEnd = new BMap.Point(116.41478,39.911901);
-	var rectangle = new BMap.Polygon([
-		new BMap.Point(pStart.lng,pStart.lat),
-		new BMap.Point(pEnd.lng,pStart.lat),
-		new BMap.Point(pEnd.lng,pEnd.lat),
-		new BMap.Point(pStart.lng,pEnd.lat)
-	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});  //创建矩形
+	map.centerAndZoom(pStart, 15);	
+	var marker = new BMap.Marker(pStart); // 创建点
+	//矩形
+	var rectView = getRectView(pStart,pEnd);
+	var label = new BMap.Label("文字标注",{offset:new BMap.Size(20,-10)});
+	marker.setLabel(label);
 	
-	//添加覆盖物
-	function add_overlay(){
-		map.addOverlay(marker);            //增加点
-		map.addOverlay(polyline);          //增加折线
-		map.addOverlay(circle);            //增加圆
-		map.addOverlay(polygon);           //增加多边形
-		map.addOverlay(rectangle);         //增加矩形
+	function add_overlay(){		
+		map.addOverlay(marker);
+		map.addOverlay(rectView);    		
 	}
 	//清除覆盖物
 	function remove_overlay(){
 		map.clearOverlays();         
 	}
-
-	</script>
-</html>
+	
+	function getNewPoint(point,callback){
+		var convertor = new BMap.Convertor();        
+        convertor.translate([point], 1, 5, callback);	
+	}
+	
+	var translateCallback = function (data){
+      if(data.status === 0) {
+      	var right_point = data.points[0];
+      	var marker = new BMap.Marker(right_point);  // 创建标注
+		map.addOverlay(marker);              // 将标注添加到地图中
+		map.panTo(right_point);
+      }
+    }
+	
+	// 用经纬度设置地图中心点
+	function theLocation(){
+		var lng = document.getElementById("longitude").value;
+		var lat = document.getElementById("latitude").value;
+		if(lng != "" && lat != ""){
+			map.clearOverlays(); 
+			var new_point = new BMap.Point(lng,lat);
+			getNewPoint(new_point,translateCallback);			      
+		}
+	}
+</script>
