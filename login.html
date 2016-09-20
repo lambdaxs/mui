@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+</head>
+<body>
+
+<header class="mui-bar mui-bar-nav" id="titleView">
+    <!--<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#"></a>-->
+    <h1 id="login-title" class="mui-title">登录</h1>
+    <!--<a class="mui-icon mui-icon-gear mui-pull-right" href="#" style="visibility: hidden;"></a>-->
+</header>
+
+<div class="mui-content">
+
+    <!--登录-->
+    <form id="login" class="mui-input-group on">
+        <div class="mui-input-row">
+            <label class="login-label">手机号</label>
+            <input type="text" class="mui-input-clear login-input" placeholder="请输入手机号">
+        </div>
+        <div class="mui-input-row">
+            <label class="login-label">密码</label>
+            <input type="password" class="mui-input-password login-input" placeholder="请输入密码">
+        </div>
+
+        <div class="mui-button-row login-btn-row">
+            <button type="button" class="mui-btn mui-btn-primary">登录</button>
+            <button id="goReg" type="button" class="mui-btn mui-btn-danger" >注册</button>
+        </div>
+
+        <div class="forget-pwd">
+            <a id="goAgree" href="#">验证码登录</a>&nbsp;<a id="goForget" href="#">忘记密码？</a>
+        </div>
+    </form>
+    <!--登录结束-->
+
+    <!--注册-->
+    <form id="reg" class="mui-input-group none">
+        <div class="mui-input-row">
+            <label class="login-label">手机号</label>
+            <input type="text" class="mui-input-clear login-input" placeholder="请输入手机号">
+        </div>
+        <div class="mui-input-row">
+            <label class="login-label">验证码</label>
+            <input type="text" class="login-codes" placeholder="请输入验证码">
+            <button type="button" class="mui-btn mui-btn-primary codes-btn">发送验证码</button>
+        </div>
+        <div class="mui-input-row">
+            <label class="login-label">密码</label>
+            <input type="password" class="mui-input-password login-input" placeholder="请输入密码">
+
+        </div>
+        <div class="login-agree">
+            <input type="radio" style="vertical-align: middle" checked/>
+            <label>同意<a href="#">XXXXXX协议</a></label>
+        </div>
+        <div class="mui-button-row registered-btn-row">
+            <!--<button type="button" class="mui-btn mui-btn-primary">登录</button>-->
+            <button type="button" class="mui-btn mui-btn-danger registered" >注册</button>
+        </div>
+        <div class="login-agree">
+            <a class="goLogin" href="#">返回登录</a>
+        </div>
+    </form>
+    <!--注册结束-->
+
+    <!--验证码-->
+    <form id="agree" class="mui-input-group none">
+        <div class="mui-input-row">
+            <label class="login-label">手机号</label>
+            <input type="text" class="mui-input-clear login-input" placeholder="请输入手机号">
+        </div>
+        <div class="mui-input-row">
+            <label class="login-label">验证码</label>
+            <input type="text" class="login-codes" placeholder="请输入验证码">
+            <button type="button" class="mui-btn mui-btn-primary codes-btn">发送验证码</button>
+        </div>
+
+        <div class="mui-button-row login-block-row">
+            <!--<button type="button" class="mui-btn mui-btn-primary">登录</button>-->
+            <button type="button" class="mui-btn mui-btn-danger login-block">登录</button>
+        </div>
+        <div class="forget-pwd">
+            <a class="goLogin" href="#">密码登录</a>
+        </div>
+    </form>
+    <!--验证码结束-->
+
+    <!--忘记密码-->
+    <form id="forget" class="mui-input-group none">
+        <div class="mui-input-row">
+            <label class="login-label">手机号</label>
+            <input type="text" class="mui-input-clear login-input" placeholder="请输入手机号">
+        </div>
+        <div class="mui-input-row">
+            <label class="login-label">验证码</label>
+            <input type="text" class="login-codes" placeholder="请输入验证码">
+            <button type="button" class="mui-btn mui-btn-primary codes-btn">发送验证码</button>
+        </div>
+
+        <div class="mui-input-row">
+            <label class="login-label">密码</label>
+            <input type="password" class="mui-input-password login-input" placeholder="请重新设置密码">
+        </div>
+
+        <div class="mui-button-row login-block-row">
+            <!--<button type="button" class="mui-btn mui-btn-primary">登录</button>-->
+            <button type="button" class="mui-btn mui-btn-danger login-block">登录</button>
+        </div>
+        <div class="forget-pwd">
+            <a class="goLogin" href="#">返回登录</a>
+        </div>
+    </form>
+    <!--忘记密码结束-->
+</div>
+</body>
+<script type="text/javascript" src="js/mui.js"></script>
+<script>
+    mui.init();
+
+    // 去注册界面
+    mui('#goReg')[0].addEventListener('tap', function () {
+        allHide();
+        mui('#reg')[0].style.display = 'block';
+        mui('#login-title')[0].innerText = '注册'
+    });
+
+    // 返回登录界面
+    mui('.mui-input-group').on('tap','.goLogin', function () {
+        allHide();
+        mui('#login')[0].style.display = 'block';
+        mui('#login-title')[0].innerText = '登录'
+    });
+
+
+    // 去验证码登录界面
+    mui('#goAgree')[0].addEventListener('tap', function () {
+        allHide();
+        mui('#agree')[0].style.display = 'block';
+        mui('#login-title')[0].innerText = '登录'
+    });
+
+    // 去忘记密码界面
+    mui('#goForget')[0].addEventListener('tap',function () {
+        allHide();
+        mui('#forget')[0].style.display = 'block';
+        mui('#login-title')[0].innerText = '登录'
+    });
+
+    function allHide() {
+        mui('#login')[0].style.display = 'none';
+        mui('#reg')[0].style.display = 'none';
+        mui('#agree')[0].style.display = 'none';
+        mui('#forget')[0].style.display = 'none';
+    } 
+
+    // 发送验证码按钮
+    mui('.mui-input-row').on('tap', '.codes-btn', function () {
+        var self = this;
+        self.setAttribute("disabled", true);
+        var wait = 60;
+        self.time = setInterval(function () {
+            console.log(wait);
+            if (wait === 0) {
+                self.removeAttribute("disabled");
+                self.innerText = '获取验证码';
+                clearInterval(self.time)
+            }
+            else {
+                wait--;
+                self.innerText = '获取验证码('+wait+')';
+            }
+
+        },1000)
+    });
+
+
+</script>
+</html>

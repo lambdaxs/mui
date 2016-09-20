@@ -1,0 +1,72 @@
+.login-label {
+    width: 30% !important;
+}
+
+.login-input {
+    width: 70% !important;
+}
+
+.forget-pwd {
+    padding: 5px 20px;
+    font-size: 12px;
+    text-align: justify;
+    text-align-last:justify;
+}
+
+.forget-pwd a{
+     display: inline-block;
+ }
+
+.login-btn-row {
+    padding:0 10px;
+    height: auto !important;
+}
+
+.login-btn-row button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.none {
+    display: none;
+}
+
+.on {
+    display: block;
+}
+
+.login-agree {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.login-codes {
+    float: left !important;
+    width: 37% !important;
+}
+
+.codes-btn {
+    width: 33% !important;
+    float: left !important;
+    font-size: 12px;
+}
+
+.registered {
+    width: 100%;
+}
+
+.registered-btn-row {
+    padding: 0 10px;
+    height: auto !important;
+}
+
+.login-block-row {
+    padding: 0 10px;
+    height: auto;
+}
+
+.login-block {
+    width: 100%;
+    margin-top: 10px;
+}

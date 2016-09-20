@@ -34,13 +34,13 @@ var nlb = {
 		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
      	var r = window.location.search.substr(1).match(reg);
      	if(r!=null){
-     		var paramValue = unescape(r[2]);
+     		var paramValue = decodeURI(r[2]);
      		var startStr = paramValue.charAt(0);
      		var endStr = paramValue.charAt(paramValue.length-1);
      		if ((startStr === '[' || startStr === '{') &&(endStr === ']' || endStr === '}')){
      			return JSON.parse(paramValue);
      		}
-     		return  unescape(r[2]);
+     		return  decodeURI(r[2]);
      	}
      	return null;
 	},	
@@ -55,6 +55,13 @@ var nlb = {
                 obj.style[i] = options[i]; //设置css样式
             }
         }
-    }
+   },
+   fillView:function(contentId,viewTemplate,data){
+   		if(!template){
+   			console.log('需要引入template库');
+   		}else {
+   			document.getElementById(contentId).innerHTML = template.compile(viewTemplate)(data);
+   		}   		
+   }
 };
 
